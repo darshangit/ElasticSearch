@@ -29,3 +29,12 @@ curl -XPUT 'localhost:9200/products/mobiles/1?pretty' -d'
 "reviews": ["Incredibly happy after using one week", "Best Iphone so far", "Expensive", "Stick to android"]
 }
 ' -H "Content-Type: application/json"
+
+## Retrieving Documents
+curl -XGET 'localhost:9200/products/mobiles/1?pretty'
+
+### Retireiving documents without content
+curl -XGET 'localhost:9200/products/mobiles/1?pretty&_source=false'
+
+### specific source
+curl -XGET 'localhost:9200/products/mobiles/1?pretty&_source=name,reviews'
