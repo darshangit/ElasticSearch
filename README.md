@@ -78,5 +78,18 @@ curl -XPOST 'localhost:9200/_bulk?pretty' -d'
 
 curl -H "Content-Type: application/x-ndjson" -XPOST 'localhost:9200/customers/personal/_bulk?pretty&refresh' --data-binary @"customers_full.json"
 
+## Search
+
+curl -XGET 'localhost:9200/customers/_search?q=24&pretty'
+
+### search with sort
+http://localhost:9200/customers/_search?q=female&sort=age&pretty
+
+### asc & desc
+http://localhost:9200/customers/_search?q=female&sort=age:desc&pretty 
+
+### Explain Search
+http://localhost:9200/customers/_search?q=female&explain=true&pretty
+
 
 
