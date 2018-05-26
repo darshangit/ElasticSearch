@@ -49,3 +49,12 @@ $ curl -XPOST 'localhost:9200/products/mobiles/2/_update?pretty' -d'
 }
 ' -H "Content-Type: ^C
 
+## To increment value of the year by 2
+
+curl -XPOST 'localhost:9200/products/mobiles/2/_update?pretty' -d'
+> {
+> "script": "ctx._source.year +=2"
+> }
+> ' -H "Content-Type: application/json"
+
+
