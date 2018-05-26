@@ -38,3 +38,14 @@ curl -XGET 'localhost:9200/products/mobiles/1?pretty&_source=false'
 
 ### specific source
 curl -XGET 'localhost:9200/products/mobiles/1?pretty&_source=name,reviews'
+
+## To update a part of the document - use POST with _update
+
+$ curl -XPOST 'localhost:9200/products/mobiles/2/_update?pretty' -d'
+{
+"doc": {
+"dolor": "black"
+}
+}
+' -H "Content-Type: ^C
+
