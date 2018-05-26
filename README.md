@@ -74,4 +74,9 @@ curl -XPOST 'localhost:9200/_bulk?pretty' -d'
 { "name": "dasAwesomeXiomi", "camera": "10px", "storage": "22px" }
 ' -H "Content-Type: application/json"
 
+### Bulk opertaion with content in file
+
+curl -H "Content-Type: application/x-ndjson" -XPOST 'localhost:9200/customers/personal/_bulk?pretty&refresh' --data-binary @"customers_full.json"
+
+
 
