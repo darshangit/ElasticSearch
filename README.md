@@ -181,6 +181,12 @@ curl -XGET 'localhost:9200/customers/_search?pretty' -d'
 }
 ' -H "Content-Type: application/json"
 
+## Boolean Query
+
+1)must
+2)should
+3)must_not
+4)filter
 
 
 
