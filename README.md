@@ -183,10 +183,50 @@ curl -XGET 'localhost:9200/customers/_search?pretty' -d'
 
 ## Boolean Query
 
-1)must
-2)should
-3)must_not
-4)filter
+#### must
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -d'
+{
+"query": {
+"bool": {
+"must": [
+{"match": {"street": "randolph"}},
+{"match": {"street": "346"}}
+]
+}
+}
+}
+' -H "Content-Type: application/json"
+#### should
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -d'
+{
+"query": {
+"bool": {
+"should": [
+{"match": {"street": "randolph"}},
+{"match": {"street": "Street"}}
+]
+}
+}
+}
+' -H "Content-Type: application/json"
+#### must_not
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -d'
+{
+"query": {
+"bool": {
+"must_not": [
+{"match": {"street": "randolph"}},
+{"match": {"street": "Street"}}
+]
+}
+}
+}
+' -H "Content-Type: application/json"
+
+#### filter
 
 
 
