@@ -137,4 +137,50 @@ curl -XGET 'localhost:9200/customers/_search?pretty' -d'
 }
 ' -H "Content-Type: application/json"
 
+## Match, Match_all
+
+### match - seaches frnak or norris
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -d'
+{
+"query": {
+"match": {
+"name" : {
+"query" : "frank norris",
+"operator" : "or"
+}
+}
+}
+}
+' -H "Content-Type: application/json"
+
+### match phrase - complete phrase is matched
+curl -XGET 'localhost:9200/customers/_search?pretty' -d'
+{
+"query": {
+"match_phrase": {
+"name" : {
+"query" : "Lara baird"
+}
+}
+}
+}
+' -H "Content-Type: application/json"
+
+### match phrase prefix - like operator
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -d'
+{
+"query": {
+"match_phrase_prefix": {
+"name" : {
+"query" : "er"
+}
+}
+}
+}
+' -H "Content-Type: application/json"
+
+
+
 
