@@ -246,4 +246,38 @@ curl -XGET 'localhost:9200/customers/_search?pretty' -d'
 }
 ' -H "Content-Type: application/json"
 
+## Metric
+
+#### avg
+curl -XPOST 'localhost:9200/customers/_search?&pretty' -d'
+{
+"size": 0,
+"aggs": {
+"avg_age": {
+"avg": {
+"field": "age"
+}
+}
+}
+}
+' -H "Content-Type: application/json"
+
+#### stats : gives all the values (min / max/sum etc)
+curl -XPOST 'localhost:9200/customers/_search?&pretty' -d'
+{
+"size": 0,
+"aggs": {
+"age_stats": {
+"stats": {
+"field": "age"
+}
+}
+}
+}
+' -H "Content-Type: application/json"
+
+#### cardinality - The number of unique values of the field specified
+
+
+
 
