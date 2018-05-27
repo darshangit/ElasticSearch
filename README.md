@@ -119,7 +119,7 @@ curl -XGET 'localhost:9200/customers/_search?pretty' -d'
 }
 ' -H "Content-type: application/json"
 
-### _Source firld to determine what fields we require
+### _Source field to determine what fields we require
 
  curl -XGET 'localhost:9200/customers/_search?pretty' -d'
 {
@@ -128,5 +128,13 @@ curl -XGET 'localhost:9200/customers/_search?pretty' -d'
 }
 ' -H "Content-Type: application/json"
 
+### _source field with Includes/ excludes
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -d'
+{
+"_source": {"includes": ["st*", "*n*"], "excludes": ["*der"]},
+"query": {"term" :{"street": "street"}}
+}
+' -H "Content-Type: application/json"
 
 
