@@ -112,5 +112,21 @@ curl -XGET 'localhost:9200/products,customers/_search?pretty' -d'
 }
 ' -H "Content-type: application/json"
 
+### Search with relevant terms
+curl -XGET 'localhost:9200/customers/_search?pretty' -d'
+{
+"query": { "term": {"name": "kim"} }
+}
+' -H "Content-type: application/json"
+
+### _Source firld to determine what fields we require
+
+ curl -XGET 'localhost:9200/customers/_search?pretty' -d'
+{
+"_source": "st*",
+"query": {"term" :{"street": "street"}}
+}
+' -H "Content-Type: application/json"
+
 
 
