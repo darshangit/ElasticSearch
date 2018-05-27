@@ -228,5 +228,22 @@ curl -XGET 'localhost:9200/customers/_search?pretty' -d'
 
 #### filter
 
+curl -XGET 'localhost:9200/customers/_search?pretty' -d'
+{
+"query": {
+"bool": {
+"must":{ "match_all": {} },
+"filter": {
+"range": {
+"age": {
+"gte": 20,
+"lte": 30
+}
+}
+}
+}
+}
+}
+' -H "Content-Type: application/json"
 
 
