@@ -91,5 +91,26 @@ http://localhost:9200/customers/_search?q=female&sort=age:desc&pretty
 ### Explain Search
 http://localhost:9200/customers/_search?q=female&explain=true&pretty
 
+### Search All
+curl -XGET 'localhost:9200/products/_search?pretty' -d'
+{
+"query": { "match_all": {} }
+}
+' -H "Content-type: application/json"
+
+### Search with size
+curl -XGET 'localhost:9200/products/_search?pretty' -d'
+{
+"query": { "match_all": {} }, "size": 3
+}
+' -H "Content-type: application/json"
+
+### Search multiple indices
+curl -XGET 'localhost:9200/products,customers/_search?pretty' -d'
+{
+"query": { "match_all": {} }, "size": 200
+}
+' -H "Content-type: application/json"
+
 
 
